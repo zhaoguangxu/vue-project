@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { ref, onMounted } from 'vue'
+
+const count = ref(0)
+const isLoading = ref(true)
+
+onMounted(() => {
+  isLoading.value = false
+})
+
 </script>
 
 <template>

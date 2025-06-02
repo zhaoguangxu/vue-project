@@ -16,7 +16,7 @@ describe('BaseButton', () => {
   })
 
   it('renders with different types', () => {
-    const types = ['primary', 'secondary', 'danger', 'text']
+    const types = ['primary', 'secondary', 'danger', 'text'] as const
 
     types.forEach((type) => {
       const wrapper = mount(BaseButton, {
@@ -29,7 +29,7 @@ describe('BaseButton', () => {
   })
 
   it('renders with different sizes', () => {
-    const sizes = ['small', 'medium', 'large']
+    const sizes = ['small', 'medium', 'large'] as const
 
     sizes.forEach((size) => {
       const wrapper = mount(BaseButton, {

@@ -105,6 +105,7 @@ const _sfc_main$8 = /* @__PURE__ */ _defineComponent$2({
             width: "125",
             height: "125"
           }, null, -1)),
+          _cache[3] || (_cache[3] = _createTextVNode$1(" 1234567890 ")),
           _createElementVNode$7("div", _hoisted_1$6, [
             _createVNode$2(HelloWorld, { msg: "You did it!" }),
             _createElementVNode$7("nav", null, [
@@ -131,7 +132,7 @@ const _sfc_main$8 = /* @__PURE__ */ _defineComponent$2({
   }
 });
 
-const App = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-561e7f99"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-baed688b"]]);
 
 const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/vue-project/"+dep };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
   let promise = Promise.resolve();

@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { ref, onMounted } from 'vue'
 
-const count = ref(0)
+const count = ref(10)
 const isLoading = ref(true)
 
 onMounted(() => {
@@ -16,11 +16,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h1>Hello World</h1>
-    <p>Count: {{ count }}</p>
-  </div>
   <header>
+    <p>Count: {{ count }}</p>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">

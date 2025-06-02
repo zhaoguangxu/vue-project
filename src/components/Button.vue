@@ -9,6 +9,10 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: 'FederationButton'
+})
+
 defineProps<{
   type?: 'primary' | 'secondary' | 'success' | 'danger'
   size?: 'small' | 'medium' | 'large'

@@ -63,7 +63,7 @@ npm run lint
 1. 确保项目已推送到 GitHub 仓库
 2. 在 GitHub 仓库设置中启用 GitHub Pages：
    - 进入仓库的 Settings > Pages
-   - 在 "Source" 部分选择 "GitHub Actions"
+   - 在 "Source" 部分选择 **gh-pages 分支**（推荐，见下方说明）
 3. 确保 `vite.config.ts` 中配置了正确的基础路径（如果项目不是部署在根路径）
 
 ### 自动化保证
@@ -74,3 +74,39 @@ npm run lint
 - 类型安全（通过 TypeScript 检查）
 - 构建成功
 - 自动部署到 GitHub Pages
+
+---
+
+### CI/CD 与 GitHub Pages 的关系说明
+
+1. **GitHub Actions 与 GitHub Pages 的关系**
+
+   - GitHub Actions 用于自动化构建、测试、打包、部署。
+   - GitHub Pages 用于托管静态网站。
+
+2. **peaceiris/actions-gh-pages 的工作原理**
+
+   - CI/CD 工作流（GitHub Actions）会自动构建项目，并把打包后的静态文件推送到 `gh-pages` 分支。
+   - 这一步完成后，静态资源就已经在 `gh-pages` 分支上了。
+
+3. **GitHub Pages 的 Source 设置**
+
+   - GitHub Pages 必须"知道"从哪里读取静态资源来对外发布。
+   - 常见方式：
+     - Source 选 `gh-pages` 分支：最常见、最兼容，GitHub Pages 会自动发布 `gh-pages` 分支的内容。
+     - Source 选 GitHub Actions：适用于官方的 `deploy-pages` Action（而不是 peaceiris/actions-gh-pages）。
+
+4. **为什么本项目要选 gh-pages 分支？**
+
+   - 本项目 workflow 用的是 peaceiris/actions-gh-pages，它的作用就是把构建产物推送到 `gh-pages` 分支。
+   - 这种方式下，GitHub Pages 必须设置 Source 为 `gh-pages` 分支，否则不会发布分支内容，页面就会 404。
+
+5. **如果想用 Source 选 GitHub Actions？**
+   - 需要用 GitHub 官方的 `actions/deploy-pages` Action，并且 workflow 结构要做相应调整。
+   - 这种方式目前主要用于更高级的自定义场景，且官方文档和生态还在完善中。
+
+**结论：**
+
+- 当前配置下，Source 必须选 `gh-pages` 分支。
+- 这样才能让 peaceiris/actions-gh-pages 的产物被 GitHub Pages 正确发布。
+- 这并不影响您用 GitHub Actions 做持续集成和持续部署，Actions 依然全自动完成构建和推送，您无需手动操作。
